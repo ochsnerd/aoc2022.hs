@@ -4,6 +4,7 @@ pkgs.mkShell {
     (pkgs.haskellPackages.ghcWithPackages (haskellPackages: with haskellPackages; [
       haskell-language-server
       split
+      search-algorithms
     ]))
   ];
 }
