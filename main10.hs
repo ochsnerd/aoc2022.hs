@@ -7,7 +7,7 @@ import Data.List.Split (chunksOf)
 -- register is reversed (avoids repeatedly appending)
 doCommand :: [Int] -> String -> [Int]
 doCommand register "noop" = head register : register
-doCommand register (stripPrefix "addx" -> Just offset) = (v + read offset) : v : register
+doCommand register (stripPrefix "addx " -> Just offset) = (v + read offset) : v : register
   where
     v = head register
 
@@ -29,5 +29,5 @@ render = chunksOf 40 . zipWith renderPixel (cycle [0..39])
 main = do
   contents <- readFile "input10.txt"
   let registerHistory = doCommands $ lines contents
-  print $ sum $ signalStrengthAt <$> [20, 60, 100, 140, 180, 220] ?? registerHistory
+  print $ sum $ signalStrengthAt <$> [20, 60 .. 220] ?? registerHistory
   mapM putStrLn $ render registerHistory

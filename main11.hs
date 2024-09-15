@@ -28,9 +28,9 @@ monkey operation test toTrue toFalse item =
     else (toFalse, item')
   where
     -- part 1
-    -- item' = operation item `div` 3
+    item' = operation item `div` 3
     -- part 2
-    item' = operation item `mod` (13 * 19 * 11 * 17 * 3 * 7 * 5 * 2)
+    -- item' = operation item `mod` (13 * 19 * 11 * 17 * 3 * 7 * 5 * 2)
 
 monkeyDoSingle :: MonkeyAction -> (Counts, Items) -> Index -> (Counts, Items)
 monkeyDoSingle action (counts, state) index = (increment counts index, append state' (action item))
@@ -62,7 +62,7 @@ main = do
   let (i7, m7) = ([92, 52, 85, 89, 68, 82], monkey (\i -> i * i) (divisible 2) 0 1)
   let allMonkeyActions = [m0, m1, m2, m3, m4, m5, m6, m7]
   let startingState = [i0, i1, i2, i3, i4, i5, i6, i7]
-  let (endCounts, endStates) = foldr (\_ state -> doRound allMonkeyActions state) ([0, 0, 0, 0, 0, 0, 0, 0], startingState) [1 .. 10000]
+  let (endCounts, endStates) = foldr (\_ state -> doRound allMonkeyActions state) ([0, 0, 0, 0, 0, 0, 0, 0], startingState) [1 .. 100]
   print (endCounts, endStates)
   let Just (a, b) = twoLargest endCounts
   print (a * b)
