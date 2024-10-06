@@ -5,6 +5,8 @@ pkgs.mkShell {
       haskell-language-server
       split
       search-algorithms
+      hashable
+      unordered-containers
     ]))
   ];
 }
